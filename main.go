@@ -36,7 +36,7 @@ func killProcessPort(port string) {
 }
 
 func handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
-    var blacklistedDomains = []string{"fb.com", "google.com"}
+	var blacklistedDomains = []string{"fb.com", "google.com"}
 	// Lấy thời gian hiện tại
 	currentTime := time.Now().Format("Jan 02 15:04:05")
 
@@ -45,20 +45,23 @@ func handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 
 	fmt.Printf("(%s) Received DNS request from: %s\n", currentTime, remoteAddr)
 
-    // Kiểm tra xem domain yêu cầu có trong danh sách đen không
-    for _, q := range r.Question {
-        for _, blacklisted := range blacklistedDomains {
-            if strings.HasSuffix(q.Name, blacklisted) {
-                fmt.Printf("Domain %s is blacklisted\n", q.Name)
-                // Trả về một phản hồi tùy chỉnh cho domain bị cấm
-                // Ví dụ: trả về một phản hồi rỗng hoặc phản hồi lỗi
-                errorResponse := new(dns.Msg)
-                errorResponse.SetRcode(r, dns.RcodeRefused)
-                w.WriteMsg(errorResponse)
-                return
-            }
-        }
-    }
+	// Kiểm tra xem domain yêu cầu có trong danh sách đen không
+	for _, q := range r.Question {
+		for _, blacklisted := range blacklistedDomains {
+			fmt.Printf("%s -- %s ", q.Name, blacklisted)
+			fmt.Printf("%t\n", strings.HasSuffix(q.Name, blacklisted))
+			dnsNameClient := strings.TrimSuffix(q.Name, ".")
+			if strings.HasSuffix(dnsNameClient, blacklisted) {
+				fmt.Printf("Domain %s is blacklisted\n", q.Name)
+				// Trả về một phản hồi tùy chỉnh cho domain bị cấm
+				// Ví dụ: trả về một phản hồi rỗng hoặc phản hồi lỗi
+				errorResponse := new(dns.Msg)
+				errorResponse.SetRcode(r, dns.RcodeRefused)
+				w.WriteMsg(errorResponse)
+				return
+			}
+		}
+	}
 
 	// Tạo một yêu cầu DNS đến máy chủ DNS của Google
 	c := new(dns.Client)
