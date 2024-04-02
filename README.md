@@ -1,0 +1,1 @@
+install golang :`sudo snap install go --channel=1.22/stable --classic`

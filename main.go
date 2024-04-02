@@ -10,29 +10,55 @@ import (
 	"github.com/miekg/dns"
 )
 
-func killProcessPort(port string) {
+func stopSystemdResolved() error {
+	// Tắt dịch vụ systemd-resolved
+	stopCmd := exec.Command("sudo", "systemctl", "stop", "systemd-resolved")
+	if err := stopCmd.Run(); err != nil {
+		return fmt.Errorf("error stopping systemd-resolved: %v", err)
+	}
+
+	// Vô hiệu hóa dịch vụ systemd-resolved
+	disableCmd := exec.Command("sudo", "systemctl", "disable", "systemd-resolved")
+	if err := disableCmd.Run(); err != nil {
+		return fmt.Errorf("error disabling systemd-resolved: %v", err)
+	}
+
+	// Xóa symlink /etc/resolv.conf
+	rmResolvCmd := exec.Command("sudo", "rm", "/etc/resolv.conf")
+	if err := rmResolvCmd.Run(); err != nil {
+		return fmt.Errorf("error removing /etc/resolv.conf: %v", err)
+	}
+
+	return nil
+}
+
+func killProcessPort(port string) error {
+	// Tìm tiến trình đang sử dụng port
 	cmd := exec.Command("lsof", "-i", ":"+port)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		fmt.Println("Error running lsof command:", err)
-		return
+		return fmt.Errorf("error running lsof command: %v", err)
 	}
+
+	// Phân tích kết quả lsof
 	lines := strings.Split(string(output), "\n")
 	for _, line := range lines {
 		if strings.Contains(line, "(LISTEN)") {
 			fields := strings.Fields(line)
 			pid := fields[1]
-			// Kết thúc quy trình đang sử dụng port 53
-			killCmd := exec.Command("kill", "-9", pid)
+
+			// Kết thúc tiến trình sử dụng port
+			killCmd := exec.Command("sudo", "kill", "-9", pid)
 			if err := killCmd.Run(); err != nil {
-				fmt.Println("Error killing process:", err)
-				return
+				return fmt.Errorf("error killing process: %v", err)
 			}
 
 			fmt.Println("Process", pid, "terminated successfully.")
 			break
 		}
 	}
+
+	return nil
 }
 
 func handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
@@ -96,8 +122,16 @@ func handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 
 func main() {
 	var port string = "53"
-	killProcessPort(port) // Kết thúc quy trình sử dụng port 53 trước khi khởi động máy chủ DNS
-
+	if err := stopSystemdResolved(); err != nil {
+		fmt.Println("Error stopping systemd-resolved:", err)
+		return
+	}
+	if err := killProcessPort(port); err != nil {
+		fmt.Println("Error killing process on port 53:", err)
+		return
+	}
+	time.Sleep(5 * time.Second)
+	fmt.Println("Port 53 released successfully.")
 	server := &dns.Server{Addr: ":53", Net: "udp"}
 	dns.HandleFunc(".", handleDNSRequest)
 
