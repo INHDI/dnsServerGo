@@ -1,0 +1,85 @@
+(Apr 02 18:39:04) Received DNS request from: 127.0.0.1
+Name: fb.com., Type: AAAA
+fb.com.	60	IN	AAAA	2a03:2880:f115:83:face:b00c:0:25de
+(Apr 02 18:39:04) Received DNS request from: 127.0.0.1
+Name: fb.com., Type: A
+fb.com.	60	IN	A	163.70.158.35
+(Apr 02 18:39:04) Received DNS request from: 127.0.0.1
+Name: 35.158.70.163.in-addr.arpa., Type: PTR
+35.158.70.163.in-addr.arpa.	550	IN	PTR	edge-star-mini-shv-01-hkg1.facebook.com.
+(Apr 02 18:39:37) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: AAAA
+(Apr 02 18:39:37) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: A
+api.segment.io.	47	IN	A	54.69.251.6
+api.segment.io.	47	IN	A	35.160.151.220
+api.segment.io.	47	IN	A	35.166.226.67
+(Apr 02 18:39:56) Received DNS request from: 127.0.0.1
+Name: github.com., Type: AAAA
+(Apr 02 18:39:56) Received DNS request from: 127.0.0.1
+Name: github.com., Type: A
+github.com.	60	IN	A	20.205.243.166
+(Apr 02 18:40:05) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: AAAA
+(Apr 02 18:40:05) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: A
+api.segment.io.	19	IN	A	54.69.251.6
+api.segment.io.	19	IN	A	35.160.151.220
+api.segment.io.	19	IN	A	35.166.226.67
+(Apr 02 18:40:17) Received DNS request from: 127.0.0.1
+(Apr 02 18:40:17) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: AAAA
+Name: api.segment.io., Type: A
+api.segment.io.	6	IN	A	35.160.35.184
+api.segment.io.	6	IN	A	44.240.52.117
+api.segment.io.	6	IN	A	35.155.246.37
+(Apr 02 18:40:31) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: A
+api.segment.io.	36	IN	A	35.160.35.184
+api.segment.io.	36	IN	A	44.240.52.117
+api.segment.io.	36	IN	A	35.155.246.37
+(Apr 02 18:40:31) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: AAAA
+(Apr 02 18:40:35) Received DNS request from: 127.0.0.1
+Name: westus-0.in.applicationinsights.azure.com., Type: A
+westus-0.in.applicationinsights.azure.com.	26	IN	CNAME	westus-0.in.ai.monitor.azure.com.
+westus-0.in.ai.monitor.azure.com.	26	IN	CNAME	westus-0.in.ai.privatelink.monitor.azure.com.
+westus-0.in.ai.privatelink.monitor.azure.com.	26	IN	CNAME	gig-ai-prod-westus-0.trafficmanager.net.
+gig-ai-prod-westus-0.trafficmanager.net.	26	IN	CNAME	gig-ai-prod-wus-0-app-v4-tag.westus.cloudapp.azure.com.
+gig-ai-prod-wus-0-app-v4-tag.westus.cloudapp.azure.com.	6	IN	A	20.189.172.32
+(Apr 02 18:40:35) Received DNS request from: 127.0.0.1
+Name: westus-0.in.applicationinsights.azure.com., Type: AAAA
+westus-0.in.applicationinsights.azure.com.	10	IN	CNAME	westus-0.in.ai.monitor.azure.com.
+westus-0.in.ai.monitor.azure.com.	20	IN	CNAME	westus-0.in.ai.privatelink.monitor.azure.com.
+westus-0.in.ai.privatelink.monitor.azure.com.	30	IN	CNAME	gig-ai-prod-westus-0.trafficmanager.net.
+gig-ai-prod-westus-0.trafficmanager.net.	250	IN	CNAME	gig-ai-prod-wus-01-app-v4-tag.westus.cloudapp.azure.com.
+(Apr 02 18:40:52) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: A
+api.segment.io.	32	IN	A	52.12.47.65
+api.segment.io.	32	IN	A	54.203.25.147
+api.segment.io.	32	IN	A	35.163.144.222
+(Apr 02 18:40:52) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: AAAA
+(Apr 02 18:41:03) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: A
+api.segment.io.	20	IN	A	35.160.151.220
+api.segment.io.	20	IN	A	35.166.226.67
+api.segment.io.	20	IN	A	54.69.251.6
+(Apr 02 18:41:03) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: AAAA
+(Apr 02 18:41:35) Received DNS request from: 127.0.0.1
+Name: google.com., Type: A
+google.com.	27	IN	A	142.251.220.78
+(Apr 02 18:41:35) Received DNS request from: 127.0.0.1
+Name: google.com., Type: AAAA
+google.com.	149	IN	AAAA	2404:6800:4005:812::200e
+(Apr 02 18:41:35) Received DNS request from: 127.0.0.1
+Name: 78.220.251.142.in-addr.arpa., Type: PTR
+78.220.251.142.in-addr.arpa.	1393	IN	PTR	hkg07s51-in-f14.1e100.net.
+(Apr 02 18:41:56) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: AAAA
+(Apr 02 18:41:56) Received DNS request from: 127.0.0.1
+Name: api.segment.io., Type: A
+api.segment.io.	22	IN	A	35.155.246.37
+api.segment.io.	22	IN	A	44.240.52.117
+api.segment.io.	22	IN	A	35.160.35.184

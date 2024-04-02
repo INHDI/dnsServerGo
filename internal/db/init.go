@@ -95,7 +95,6 @@ func CreateDatabase(client *mongo.Client, dbName string, collection string) erro
 	// Check if the database exists in the list of databases
 	for _, db := range databases {
 		if db == dbName {
-			log.Println("Database already exists:", dbName)
 			return nil
 		}
 	}
